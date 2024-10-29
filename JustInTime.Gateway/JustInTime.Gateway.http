@@ -1,0 +1,6 @@
+@JustInTime.Gateway_HostAddress = http://localhost:5272
+
+GET {{JustInTime.Gateway_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
