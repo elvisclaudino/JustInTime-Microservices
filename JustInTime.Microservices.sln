@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JustInTime.Gateway", "JustI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JustInTime.User", "JustInTime.User\JustInTime.User.csproj", "{99A933EF-3D0D-4303-9C3E-3ACD1C106F34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustInTime.SharedLibrary", "..\JustInTime.SharedLibrary\JustInTime.SharedLibrary.csproj", "{DAF79718-DCF5-4401-B6AE-E94F01A4B68A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{8A808E47-F451-458D-B7CF-9DFC5DA04115}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{99A933EF-3D0D-4303-9C3E-3ACD1C106F34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99A933EF-3D0D-4303-9C3E-3ACD1C106F34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99A933EF-3D0D-4303-9C3E-3ACD1C106F34}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DAF79718-DCF5-4401-B6AE-E94F01A4B68A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DAF79718-DCF5-4401-B6AE-E94F01A4B68A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DAF79718-DCF5-4401-B6AE-E94F01A4B68A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DAF79718-DCF5-4401-B6AE-E94F01A4B68A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A808E47-F451-458D-B7CF-9DFC5DA04115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A808E47-F451-458D-B7CF-9DFC5DA04115}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A808E47-F451-458D-B7CF-9DFC5DA04115}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A808E47-F451-458D-B7CF-9DFC5DA04115}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

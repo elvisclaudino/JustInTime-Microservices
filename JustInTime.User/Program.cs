@@ -1,4 +1,4 @@
-using JustInTime.SharedLibrary;
+using SharedLibrary;
 
 var builder = WebApplication.CreateBuilder(args);
 

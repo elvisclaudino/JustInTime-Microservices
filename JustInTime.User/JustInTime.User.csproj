@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\JustInTime.SharedLibrary\JustInTime.SharedLibrary.csproj" />
+    <ProjectReference Include="..\SharedLibrary\SharedLibrary.csproj" />
   </ItemGroup>
 
 </Project>
