@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  justintime.gateway:
-    image: ${DOCKER_REGISTRY-}justintimegateway
-    build:
-      context: .
-      dockerfile: JustInTime.Gateway/Dockerfile
