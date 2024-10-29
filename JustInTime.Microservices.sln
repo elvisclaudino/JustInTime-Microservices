@@ -5,7 +5,9 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JustInTime.Gateway", "JustInTime.Gateway\JustInTime.Gateway.csproj", "{BEEBD298-D4C0-4609-909E-1D0CED583C63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustInTime.User", "JustInTime.User\JustInTime.User.csproj", "{99A933EF-3D0D-4303-9C3E-3ACD1C106F34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JustInTime.User", "JustInTime.User\JustInTime.User.csproj", "{99A933EF-3D0D-4303-9C3E-3ACD1C106F34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustInTime.SharedLibrary", "..\JustInTime.SharedLibrary\JustInTime.SharedLibrary.csproj", "{DAF79718-DCF5-4401-B6AE-E94F01A4B68A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{99A933EF-3D0D-4303-9C3E-3ACD1C106F34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99A933EF-3D0D-4303-9C3E-3ACD1C106F34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99A933EF-3D0D-4303-9C3E-3ACD1C106F34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAF79718-DCF5-4401-B6AE-E94F01A4B68A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAF79718-DCF5-4401-B6AE-E94F01A4B68A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAF79718-DCF5-4401-B6AE-E94F01A4B68A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAF79718-DCF5-4401-B6AE-E94F01A4B68A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
