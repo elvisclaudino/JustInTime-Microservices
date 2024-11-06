@@ -1,7 +1,7 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/User",
+      "DownstreamPathTemplate": "/User",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -9,7 +9,7 @@
           "Port": 7001
         }
       ],
-      "UpstreamPathTemplate": "/api/User",
+      "UpstreamPathTemplate": "/User",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
     },
   ],

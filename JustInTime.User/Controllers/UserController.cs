@@ -1,19 +1,21 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using JustInTime.User.JustInTime.Application.UseCases.User.Register;
+using JustInTime.User.Shared.Communication.Requests;
+using JustInTime.User.Shared.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JustInTime.User.Controllers;
-[Route("api/[controller]")]
+[Route("[controller]")]
 [ApiController]
 public class UserController : ControllerBase
 {
-    private static readonly string[] Users = new[]
+    [HttpPost]
+    [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status201Created)]
+    public IActionResult Register(RequestRegisterUserJson request)
     {
-        "Netcode", "Hub", "Fred"
-    };
+        var useCase = new RegisterUserUseCase();
 
-    [HttpGet]
-    public IActionResult Get()
-    {
-        return Ok(Users);
+        var result = useCase.Execute(request);
+
+        return Created(string.Empty, result);
     }
 }

@@ -18,4 +18,9 @@
     <ProjectReference Include="..\SharedLibrary\SharedLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="JustInTime.Domain\" />
+    <Folder Include="JustInTime.Infrastructure\" />
+  </ItemGroup>
+
 </Project>
