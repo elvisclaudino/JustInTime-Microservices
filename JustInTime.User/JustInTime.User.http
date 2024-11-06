@@ -1,0 +1,6 @@
+@JustInTime.User_HostAddress = http://localhost:5001
+
+GET {{JustInTime.User_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
