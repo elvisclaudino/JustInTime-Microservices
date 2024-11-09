@@ -2,6 +2,9 @@ using JustInTime.User.Filters;
 using JustInTime.User.Middleware;
 using SharedLibrary;
 
+using JustInTime.User.JustInTime.Application;
+using JustInTime.User.JustInTime.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +15,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
+
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure();
 
 var app = builder.Build();
 
