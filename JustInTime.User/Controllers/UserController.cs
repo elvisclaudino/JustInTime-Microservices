@@ -1,12 +1,14 @@
-﻿using JustInTime.User.JustInTime.Application.UseCases.User.Register;
+﻿using JustInTime.User.JustInTime.Application.UseCases.User.GetUsers;
+using JustInTime.User.JustInTime.Application.UseCases.User.Register;
 using JustInTime.User.Shared.Communication.Requests;
 using JustInTime.User.Shared.Communication.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JustInTime.User.Controllers;
 public class UserController : JustInTimeController
 {
-    [HttpPost]
+    [HttpPost("register")]
     [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status201Created)]
     public async Task<IActionResult> Register(
         [FromServices] IRegisterUserUseCase useCase,
@@ -15,5 +17,15 @@ public class UserController : JustInTimeController
         var result = await useCase.Execute(request);
 
         return Created(string.Empty, result);
+    }
+
+    [HttpGet("users")]
+    [Authorize]
+    [ProducesResponseType(typeof(IEnumerable<ResponseUserJson>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAllActiveUsers(
+            [FromServices] IGetAllActiveUsersUseCase useCase)
+    {
+        var result = await useCase.Execute();
+        return Ok(result);
     }
 }
