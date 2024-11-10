@@ -4,9 +4,7 @@ using JustInTime.User.Shared.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JustInTime.User.Controllers;
-[Route("[controller]")]
-[ApiController]
-public class UserController : ControllerBase
+public class UserController : JustInTimeController
 {
     [HttpPost]
     [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status201Created)]

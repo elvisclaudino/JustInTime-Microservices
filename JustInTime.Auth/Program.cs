@@ -1,9 +1,8 @@
-using JustInTime.User.Filters;
+using JustInTime.Auth.Filters;
+using JustInTime.Auth.JustInTime.Application;
+using JustInTime.Auth.JustInTime.Infrastructure;
+using JustInTime.Auth.Middleware;
 using SharedLibrary;
-
-using JustInTime.User.JustInTime.Application;
-using JustInTime.User.JustInTime.Infrastructure;
-using JustInTime.User.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,8 +15,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
-builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication(builder.Configuration);
 
 var app = builder.Build();
 

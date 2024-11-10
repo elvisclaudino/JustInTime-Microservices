@@ -12,6 +12,18 @@
       "UpstreamPathTemplate": "/User",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
     },
+    {
+      "DownstreamPathTemplate": "/Auth",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7002
+        }
+      ],
+      "UpstreamPathTemplate": "/Auth",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+    }
   ],
   "GlobalConfiguration": {
     "BaseUrl": "https://localhost:7000"

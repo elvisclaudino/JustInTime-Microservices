@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JustInTime.Gateway", "JustI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JustInTime.User", "JustInTime.User\JustInTime.User.csproj", "{99A933EF-3D0D-4303-9C3E-3ACD1C106F34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{8A808E47-F451-458D-B7CF-9DFC5DA04115}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{8A808E47-F451-458D-B7CF-9DFC5DA04115}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustInTime.Auth", "JustInTime.Auth\JustInTime.Auth.csproj", "{024A80CF-CF3A-43CB-A890-8F465A0A005E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{8A808E47-F451-458D-B7CF-9DFC5DA04115}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A808E47-F451-458D-B7CF-9DFC5DA04115}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A808E47-F451-458D-B7CF-9DFC5DA04115}.Release|Any CPU.Build.0 = Release|Any CPU
+		{024A80CF-CF3A-43CB-A890-8F465A0A005E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{024A80CF-CF3A-43CB-A890-8F465A0A005E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{024A80CF-CF3A-43CB-A890-8F465A0A005E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{024A80CF-CF3A-43CB-A890-8F465A0A005E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
