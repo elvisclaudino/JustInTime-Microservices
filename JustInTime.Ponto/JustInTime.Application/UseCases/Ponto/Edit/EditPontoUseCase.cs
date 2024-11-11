@@ -2,6 +2,7 @@
 using JustInTime.Ponto.JustInTime.Domain.Repositories;
 using JustInTime.Ponto.Shared.Communication.Requests;
 using JustInTime.Ponto.Shared.Communication.Responses;
+using JustInTime.User;
 using JustInTime.User.Shared.Exceptions.ExceptionsBase;
 using System.Security.Claims;
 
@@ -54,6 +55,10 @@ public class EditPontoUseCase : IEditPontoUseCase
 
         _writeOnlyRepository.Update(ponto);
         await _unitOfWork.Commit();
+
+        var sender = new RabbitMqSender();
+        sender.SendMessage($"Ponto edited: {ponto.Descricao}");
+        sender.Close();
 
         return new ResponseRegisteredPontoJson { Descricao = ponto.Descricao };
     }

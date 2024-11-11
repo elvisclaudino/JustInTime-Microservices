@@ -33,5 +33,9 @@ public class DeleteUserUseCase : IDeleteUserUseCase
         _writeOnlyRepository.Update(user);
 
         await _unitOfWork.Commit();
+
+        var sender = new RabbitMqSender();
+        sender.SendMessage($"User deleted: {user.Name}");
+        sender.Close();
     }
 }

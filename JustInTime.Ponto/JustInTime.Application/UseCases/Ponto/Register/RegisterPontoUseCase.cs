@@ -2,6 +2,7 @@
 using JustInTime.Ponto.JustInTime.Domain.Repositories;
 using JustInTime.Ponto.Shared.Communication.Requests;
 using JustInTime.Ponto.Shared.Communication.Responses;
+using JustInTime.User;
 using JustInTime.User.Shared.Exceptions.ExceptionsBase;
 using System.Security.Claims;
 
@@ -43,6 +44,10 @@ public class RegisterPontoUseCase : IRegisterPontoUseCase
         await _writeOnlyRepository.Add(ponto);
 
         await _unitOfWork.Commit();
+
+        var sender = new RabbitMqSender();
+        sender.SendMessage($"Ponto created: {ponto.Descricao}");
+        sender.Close();
 
         return new ResponseRegisteredPontoJson
         {

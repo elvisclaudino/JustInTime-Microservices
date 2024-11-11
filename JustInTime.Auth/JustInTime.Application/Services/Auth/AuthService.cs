@@ -37,6 +37,10 @@ public class AuthService
 
         var token = GenerateJwtToken(user);
 
+        var sender = new RabbitMqSender();
+        sender.SendMessage($"User authenticate: {user.Name}");
+        sender.Close();
+
         return new ResponseTokenJson { Token = token };
     }
 

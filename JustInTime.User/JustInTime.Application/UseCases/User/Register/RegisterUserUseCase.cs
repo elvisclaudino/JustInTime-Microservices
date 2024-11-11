@@ -43,6 +43,10 @@ public class RegisterUserUseCase : IRegisterUserUseCase
 
         await _unitOfWork.Commit();
 
+        var sender = new RabbitMqSender();
+        sender.SendMessage($"User created: {user.Name}");
+        sender.Close();
+
         return new ResponseRegisteredUserJson
         {
             Name = request.Name

@@ -44,6 +44,10 @@ public class EditUserUseCase : IEditUserUseCase
         _writeOnlyRepository.Update(user);
         await _unitOfWork.Commit();
 
+        var sender = new RabbitMqSender();
+        sender.SendMessage($"User edited: {user.Name}");
+        sender.Close();
+
         return new ResponseRegisteredUserJson { Name = user.Name };
     }
 

@@ -1,4 +1,5 @@
 ﻿using JustInTime.Ponto.JustInTime.Domain.Repositories;
+using JustInTime.User;
 using JustInTime.User.Shared.Exceptions.ExceptionsBase;
 using System.Security.Claims;
 
@@ -45,6 +46,10 @@ public class DeletePontoUseCase : IDeletePontoUseCase
         _writeOnlyRepository.Delete(ponto);
 
         await _unitOfWork.Commit();
+
+        var sender = new RabbitMqSender();
+        sender.SendMessage($"Ponto deleted: {ponto.Descricao}");
+        sender.Close();
     }
 
     private long? GetUserIdFromToken()
