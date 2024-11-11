@@ -1,4 +1,5 @@
-﻿using JustInTime.Ponto.JustInTime.Application.UseCases.Ponto.Register;
+﻿using JustInTime.Ponto.JustInTime.Application.UseCases.Ponto.Get;
+using JustInTime.Ponto.JustInTime.Application.UseCases.Ponto.Register;
 using JustInTime.Ponto.Shared.Communication.Requests;
 using JustInTime.Ponto.Shared.Communication.Responses;
 using Microsoft.AspNetCore.Authorization;
@@ -17,5 +18,15 @@ public class PontoController : JustInTimeController
         var result = await useCase.Execute(request);
 
         return Created(string.Empty, result);
+    }
+
+    [HttpGet("pontos")]
+    [Authorize]
+    [ProducesResponseType(typeof(IEnumerable<ResponsePontoJson>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAllPontosById(
+        [FromServices] IGetAllPontosByIdUseCase useCase)
+    {
+        var result = await useCase.Execute();
+        return Ok(result);
     }
 }
