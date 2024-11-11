@@ -12,4 +12,10 @@ public class PontoRepository : IPontoReadOnlyRepository, IPontoWriteOnlyReposito
 
     public async Task<IEnumerable<Domain.Entities.Ponto?>> GetAllByUsuarioId(long userId) => await _dbContext.Ponto
         .Where(ponto => ponto.Id_Usuario.Equals(userId)).ToListAsync();
+
+    public async Task<Domain.Entities.Ponto?> GetById(long id) => await _dbContext.Ponto.Where(u => u.Id == id).FirstOrDefaultAsync();
+
+    public void Update(Domain.Entities.Ponto ponto) => _dbContext.Ponto.Update(ponto);
+
+    public void Delete(Domain.Entities.Ponto ponto) => _dbContext.Ponto.Remove(ponto);
 }

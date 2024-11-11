@@ -13,5 +13,7 @@ public class AutoMapping : Profile
     private void RequestToDomain()
     {
         CreateMap<RequestRegisterPontoJson, Domain.Entities.Ponto>();
+        CreateMap<RequestEditPontoJson, Domain.Entities.Ponto>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore()); ;
     }
 }
