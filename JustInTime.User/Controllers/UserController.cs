@@ -1,4 +1,5 @@
-﻿using JustInTime.User.JustInTime.Application.UseCases.User.GetUsers;
+﻿using JustInTime.User.JustInTime.Application.UseCases.User.Edit;
+using JustInTime.User.JustInTime.Application.UseCases.User.GetUsers;
 using JustInTime.User.JustInTime.Application.UseCases.User.Register;
 using JustInTime.User.Shared.Communication.Requests;
 using JustInTime.User.Shared.Communication.Responses;
@@ -26,6 +27,21 @@ public class UserController : JustInTimeController
             [FromServices] IGetAllActiveUsersUseCase useCase)
     {
         var result = await useCase.Execute();
+        return Ok(result);
+    }
+
+    [HttpPut("edit/{id}")]
+    [Authorize]
+    [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status200OK)]
+    public async Task<IActionResult> Edit(
+    long id,
+    [FromServices] IEditUserUseCase useCase,
+    [FromBody] RequestEditUserJson request)
+    {
+        request.Id = id;
+
+        var result = await useCase.Execute(request);
+
         return Ok(result);
     }
 }
