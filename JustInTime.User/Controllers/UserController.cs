@@ -25,7 +25,7 @@ public class UserController : JustInTimeController
     [Authorize]
     [ProducesResponseType(typeof(IEnumerable<ResponseUserJson>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAllActiveUsers(
-            [FromServices] IGetAllActiveUsersUseCase useCase)
+        [FromServices] IGetAllActiveUsersUseCase useCase)
     {
         var result = await useCase.Execute();
         return Ok(result);
