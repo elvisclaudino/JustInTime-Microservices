@@ -9,6 +9,7 @@ public static class DependencyInjectionExtension
     {
         AddAutoMapper(services);
         AddUseCases(services);
+        AddHttpContextAccessor(services);
     }
 
     public static void AddAutoMapper(IServiceCollection services)
@@ -22,5 +23,10 @@ public static class DependencyInjectionExtension
     private static void AddUseCases(IServiceCollection services)
     {
         services.AddScoped<IRegisterPontoUseCase, RegisterPontoUseCase>();
+    }
+
+    private static void AddHttpContextAccessor(IServiceCollection services)
+    {
+        services.AddHttpContextAccessor();
     }
 }
