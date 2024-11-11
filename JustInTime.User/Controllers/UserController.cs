@@ -1,4 +1,5 @@
-﻿using JustInTime.User.JustInTime.Application.UseCases.User.Edit;
+﻿using JustInTime.User.JustInTime.Application.UseCases.User.Delete;
+using JustInTime.User.JustInTime.Application.UseCases.User.Edit;
 using JustInTime.User.JustInTime.Application.UseCases.User.GetUsers;
 using JustInTime.User.JustInTime.Application.UseCases.User.Register;
 using JustInTime.User.Shared.Communication.Requests;
@@ -43,5 +44,17 @@ public class UserController : JustInTimeController
         var result = await useCase.Execute(request);
 
         return Ok(result);
+    }
+
+    [HttpPut("delete/{id}")]
+    [Authorize]
+    [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> Delete(
+    long id,
+    [FromServices] IDeleteUserUseCase useCase)
+    {
+        await useCase.Execute(id);
+
+        return NoContent();
     }
 }

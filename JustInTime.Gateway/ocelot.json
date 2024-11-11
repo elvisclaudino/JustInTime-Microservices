@@ -37,6 +37,18 @@
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
     },
     {
+      "DownstreamPathTemplate": "/User/delete/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7001
+        }
+      ],
+      "UpstreamPathTemplate": "/User/delete/{id}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+    },
+    {
       "DownstreamPathTemplate": "/Auth",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
