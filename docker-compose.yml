@@ -6,24 +6,28 @@ services:
     build:
       context: .
       dockerfile: JustInTime.Auth/Dockerfile
+    container_name: justintime.auth
 
   justintime.gateway:
     image: ${DOCKER_REGISTRY-}justintimegateway
     build:
       context: .
       dockerfile: JustInTime.Gateway/Dockerfile
-
+    container_name: justintime.gateway
+    ports:
+        - 7000:7000
 
   justintime.ponto:
     image: ${DOCKER_REGISTRY-}justintimeponto
     build:
       context: .
       dockerfile: JustInTime.Ponto/Dockerfile
-
+    container_name: justintime.ponto
 
   justintime.user:
     image: ${DOCKER_REGISTRY-}justintimeuser
     build:
       context: .
       dockerfile: JustInTime.User/Dockerfile
+    container_name: justintime.user
 
