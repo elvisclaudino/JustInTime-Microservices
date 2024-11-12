@@ -4,7 +4,9 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "justintime.gateway": "StartDebugging"
+        "justintime.gateway": "StartDebugging",
+        "justintime.ponto": "StartDebugging",
+        "justintime.auth": "StartDebugging"
       }
     }
   }

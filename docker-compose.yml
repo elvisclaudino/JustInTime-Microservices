@@ -1,62 +1,47 @@
 services:
-  justintime.gateway:
-    image: justintimegateway
-    build:
-      context: .
-      dockerfile: JustInTime.Gateway/Dockerfile
-    ports:
-      - "7000:80"
-    depends_on:
-      - justintime.user
-      - justintime.auth
-      - justintime.ponto
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
-    networks:
-      - justintime-network
-
-  justintime.auth:
-    image: justintimeauth
-    build:
-      context: .
-      dockerfile: JustInTime.Auth/Dockerfile
-    ports:
-      - "7002:80"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
-    networks:
-      - justintime-network
-
-
-  justintime.ponto:
-    image: justintimeponto
-    build:
-      context: .
-      dockerfile: JustInTime.Ponto/Dockerfile
-    ports:
-      - "7003:80"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
-    networks:
-      - justintime-network
-
-
   justintime.user:
-    image: justintimeuser
+    image: ${DOCKER_REGISTRY-}justintimeuser
     build:
       context: .
       dockerfile: JustInTime.User/Dockerfile
-    ports:
-      - "7001:80"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
     networks:
-      - justintime-network
+      - justintime_network
+    ports:
+      - "7001:7001"
+
+  justintime.gateway:
+    image: ${DOCKER_REGISTRY-}justintimegateway
+    build:
+      context: .
+      dockerfile: JustInTime.Gateway/Dockerfile
+    networks:
+      - justintime_network
+    ports:
+      - "7000:7000"
+
+
+  justintime.auth:
+    image: ${DOCKER_REGISTRY-}justintimeauth
+    build:
+      context: .
+      dockerfile: JustInTime.Auth/Dockerfile
+    networks:
+      - justintime_network
+    ports:
+      - "7002:7002"
+
+
+  justintime.ponto:
+    image: ${DOCKER_REGISTRY-}justintimeponto
+    build:
+      context: .
+      dockerfile: JustInTime.Ponto/Dockerfile
+    networks:
+      - justintime_network
+    ports:
+      - "7003:7003"
 
 networks:
-  justintime-network:
+  justintime_network:
     driver: bridge
+
