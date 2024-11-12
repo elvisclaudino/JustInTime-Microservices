@@ -1,0 +1,6 @@
+@JustInTime.Ponto_HostAddress = http://localhost:5098
+
+GET {{JustInTime.Ponto_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

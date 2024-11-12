@@ -1,0 +1,62 @@
+services:
+  justintime.gateway:
+    image: justintimegateway
+    build:
+      context: .
+      dockerfile: JustInTime.Gateway/Dockerfile
+    ports:
+      - "7000:80"
+    depends_on:
+      - justintime.user
+      - justintime.auth
+      - justintime.ponto
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - justintime-network
+
+  justintime.auth:
+    image: justintimeauth
+    build:
+      context: .
+      dockerfile: JustInTime.Auth/Dockerfile
+    ports:
+      - "7002:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - justintime-network
+
+
+  justintime.ponto:
+    image: justintimeponto
+    build:
+      context: .
+      dockerfile: JustInTime.Ponto/Dockerfile
+    ports:
+      - "7003:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - justintime-network
+
+
+  justintime.user:
+    image: justintimeuser
+    build:
+      context: .
+      dockerfile: JustInTime.User/Dockerfile
+    ports:
+      - "7001:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - justintime-network
+
+networks:
+  justintime-network:
+    driver: bridge

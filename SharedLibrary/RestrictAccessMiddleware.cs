@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace JustInTime.SharedLibrary;
+namespace SharedLibrary;
 
 public class RestrictAccessMiddleware(RequestDelegate next)
 {

@@ -1,19 +1,60 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using JustInTime.User.JustInTime.Application.UseCases.User.Delete;
+using JustInTime.User.JustInTime.Application.UseCases.User.Edit;
+using JustInTime.User.JustInTime.Application.UseCases.User.GetUsers;
+using JustInTime.User.JustInTime.Application.UseCases.User.Register;
+using JustInTime.User.Shared.Communication.Requests;
+using JustInTime.User.Shared.Communication.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JustInTime.User.Controllers;
-[Route("api/[controller]")]
-[ApiController]
-public class UserController : ControllerBase
+public class UserController : JustInTimeController
 {
-    private static readonly string[] Users = new[]
+    [HttpPost("register")]
+    [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status201Created)]
+    public async Task<IActionResult> Register(
+        [FromServices] IRegisterUserUseCase useCase,
+        [FromBody] RequestRegisterUserJson request)
     {
-        "Netcode", "Hub", "Fred"
-    };
+        var result = await useCase.Execute(request);
 
-    [HttpGet]
-    public IActionResult Get()
+        return Created(string.Empty, result);
+    }
+
+    [HttpGet("users")]
+    [Authorize]
+    [ProducesResponseType(typeof(IEnumerable<ResponseUserJson>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAllActiveUsers(
+        [FromServices] IGetAllActiveUsersUseCase useCase)
     {
-        return Ok(Users);
+        var result = await useCase.Execute();
+        return Ok(result);
+    }
+
+    [HttpPut("edit/{id}")]
+    [Authorize]
+    [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status200OK)]
+    public async Task<IActionResult> Edit(
+    long id,
+    [FromServices] IEditUserUseCase useCase,
+    [FromBody] RequestEditUserJson request)
+    {
+        request.Id = id;
+
+        var result = await useCase.Execute(request);
+
+        return Ok(result);
+    }
+
+    [HttpPut("delete/{id}")]
+    [Authorize]
+    [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> Delete(
+    long id,
+    [FromServices] IDeleteUserUseCase useCase)
+    {
+        await useCase.Execute(id);
+
+        return NoContent();
     }
 }
