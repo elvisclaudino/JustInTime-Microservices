@@ -6,7 +6,8 @@
       "serviceActions": {
         "justintime.gateway": "StartDebugging",
         "justintime.ponto": "StartDebugging",
-        "justintime.auth": "StartDebugging"
+        "justintime.auth": "StartDebugging",
+        "justintime.user": "StartDebugging"
       }
     }
   }

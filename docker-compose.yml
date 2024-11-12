@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  justintime.auth:
+    image: ${DOCKER_REGISTRY-}justintimeauth
+    build:
+      context: .
+      dockerfile: JustInTime.Auth/Dockerfile
+
+  justintime.gateway:
+    image: ${DOCKER_REGISTRY-}justintimegateway
+    build:
+      context: .
+      dockerfile: JustInTime.Gateway/Dockerfile
+
+
+  justintime.ponto:
+    image: ${DOCKER_REGISTRY-}justintimeponto
+    build:
+      context: .
+      dockerfile: JustInTime.Ponto/Dockerfile
+
+
+  justintime.user:
+    image: ${DOCKER_REGISTRY-}justintimeuser
+    build:
+      context: .
+      dockerfile: JustInTime.User/Dockerfile
+
